@@ -48,6 +48,8 @@ import kafka.javaapi.producer.Producer;
 import kafka.producer.KeyedMessage;
 import kafka.producer.ProducerConfig;
 import kafka.utils.ZKStringSerializer$;
+import kafka.utils.ZkUtils;
+import kafka.utils.ZkUtils$;
 
 /**
  * A performance test for secor
@@ -238,12 +240,13 @@ public class PerformanceTest {
             String zkConfig) throws InterruptedException {
 
         ZkClient zkClient = createZkClient(zkConfig);
+        ZkUtils zkUtils = ZkUtils$.MODULE$.apply(zkClient, false);
 
         try {
             Properties props = new Properties();
             int replicationFactor = 1;
             for (String topic : topics) {
-                AdminUtils.createTopic(zkClient, topic, partitions,
+                AdminUtils.createTopic(zkUtils, topic, partitions,
                         replicationFactor, props);
             }
         } catch (TopicExistsException e) {
