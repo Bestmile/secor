@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.bestmile</groupId>
-    <artifactId>secor</artifactId>
-    <version>0.20-SNAPSHOT</version>
+    <artifactId>secor-fork</artifactId>
+    <version>0.20.1</version>
     <packaging>jar</packaging>
     <name>secor</name>
     <description>Kafka to s3/gs/swift logs exporter</description>
