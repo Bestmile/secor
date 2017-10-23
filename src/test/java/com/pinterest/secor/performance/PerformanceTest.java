@@ -41,7 +41,7 @@ import com.pinterest.secor.util.RateLimitUtil;
 import kafka.admin.AdminUtils;
 import kafka.api.PartitionOffsetRequestInfo;
 import kafka.common.TopicAndPartition;
-import kafka.common.TopicExistsException;
+import org.apache.kafka.common.errors.TopicExistsException;
 import kafka.javaapi.OffsetResponse;
 import kafka.javaapi.consumer.SimpleConsumer;
 import kafka.javaapi.producer.Producer;

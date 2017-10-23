@@ -6,7 +6,7 @@
 
     <groupId>com.bestmile</groupId>
     <artifactId>secor-fork</artifactId>
-    <version>0.20.1</version>
+    <version>0.20.2</version>
     <packaging>jar</packaging>
     <name>secor</name>
     <description>Kafka to s3/gs/swift logs exporter</description>
@@ -108,8 +108,8 @@
         </dependency>
         <dependency>
             <groupId>org.apache.kafka</groupId>
-            <artifactId>kafka_2.11</artifactId>
-            <version>0.10.0.0</version>
+            <artifactId>kafka_2.12</artifactId>
+            <version>0.10.2.0</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.slf4j</groupId>
@@ -202,8 +202,18 @@
         </dependency>
         <dependency>
             <groupId>com.twitter</groupId>
-            <artifactId>ostrich_2.11</artifactId>
-            <version>9.18.0</version>
+            <artifactId>ostrich_2.12</artifactId>
+            <version>9.27.0</version>
+             <exclusions>
+                <exclusion>
+                    <groupId>com.fasterxml.jackson.core</groupId>
+                    <artifactId>jackson-annotations</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.fasterxml.jackson.core</groupId>
+                    <artifactId>jackson-databind</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>com.twitter.common.zookeeper</groupId>
