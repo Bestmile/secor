@@ -41,7 +41,7 @@ import com.pinterest.secor.util.RateLimitUtil;
 import kafka.admin.AdminUtils;
 import kafka.api.PartitionOffsetRequestInfo;
 import kafka.common.TopicAndPartition;
-import kafka.common.TopicExistsException;
+import org.apache.kafka.common.errors.TopicExistsException;
 import kafka.javaapi.OffsetResponse;
 import kafka.javaapi.consumer.SimpleConsumer;
 import kafka.javaapi.producer.Producer;
@@ -50,6 +50,7 @@ import kafka.producer.ProducerConfig;
 import kafka.utils.ZKStringSerializer$;
 import kafka.utils.ZkUtils;
 import kafka.utils.ZkUtils$;
+import kafka.admin.RackAwareMode.Enforced$;
 
 /**
  * A performance test for secor
@@ -247,7 +248,7 @@ public class PerformanceTest {
             int replicationFactor = 1;
             for (String topic : topics) {
                 AdminUtils.createTopic(zkUtils, topic, partitions,
-                        replicationFactor, props);
+                        replicationFactor, props, Enforced$.MODULE$);
             }
         } catch (TopicExistsException e) {
             System.out.println(e.getMessage());
